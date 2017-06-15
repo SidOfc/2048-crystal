@@ -1,9 +1,9 @@
-require "option_parser"
-require "./twenty_forty_eight/*"
+require "./twenty_forty_eight/version"
+require "./twenty_forty_eight/options"
+require "./twenty_forty_eight/game"
 
 module TwentyFortyEight
   extend self
 end
 
-game = TwentyFortyEight::Game.play
-
+TwentyFortyEight::Game.play

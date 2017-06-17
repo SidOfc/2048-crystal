@@ -4,40 +4,31 @@ module TwentyFortyEight
   module Options
     extend self
 
-    DEFAULTS = { "size" => "4" }
+    @@options = { :size => 4, :count => 1 }
 
-    @@options = {} of String => String
-
-    def get(key : (String | Symbol))
-      parse! unless parsed?
-      @@options[key.to_s]? || DEFAULTS[key.to_s]?
+    def get(key)
+      @@options[key]
     end
 
-    def get(key : (String | Symbol), default)
-      get(key) || default
+    def get(key, default)
+      @@options[key]? || default
     end
 
-    def parsed?
-      !@@options
-    end
+    OptionParser.parse! do |command|
+      command.banner = "Usage: 2048 [options]"
 
-    def parse!
-      @@options = DEFAULTS.dup
-
-      OptionParser.parse! do |command|
-        command.banner = "Usage: 2048 [options]"
-
-        command.on "-s SIZE", "--size=SIZE", "set the size of the board, default 4" do |size|
-          @@options["size"] = size
-        end
-
-        command.on "-h", "--help", "show this help and exit" do
-          puts command
-          exit
-        end
+      command.on "-s SIZE", "--size=SIZE", "set the size of the board, default 4" do |size|
+        @@options[:size] = size.to_i
       end
 
-      @@options
+      command.on "-c COUNT", "--count=COUNT", "set the number of games played" do |count|
+        @@options[:count] = count.to_i
+      end
+
+      command.on "-h", "--help", "show this help and exit" do
+        puts command
+        exit
+      end
     end
   end
 end

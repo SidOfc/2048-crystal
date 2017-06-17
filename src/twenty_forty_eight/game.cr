@@ -1,5 +1,3 @@
-require "./options"
-
 module TwentyFortyEight
   alias Row   = Array(Int32)
   alias Board = Array(Row)
@@ -8,39 +6,31 @@ module TwentyFortyEight
     getter :score
 
     @score   : Int32 = 0
-    @size    : Int32 = Options.get(:size, 4).to_i
-    @board   : Board = Board.new(@size) { Array(Int32).new(@size) { 0 } }
     @changed : Bool  = false
+    @over    : Bool  = false
 
-    def initialize
-      insert 2
+    def initialize(@size = 4)
+      @board = Board.new(@size) { Row.new(@size) { 0 } }
+
+      2.times { insert }
     end
 
-    def to_s
-      @board.each do |row|
-        puts row.map { |value| tile value }.join(" | ")
-      end
-    end
+    def move(direction)
+      unchanged!
 
-    def move(direction : (String | Symbol))
-      changed false
-
-      case direction.to_s
-      when "left"  then left
-      when "right" then right
-      when "up"    then up
-      when "down"  then down
+      case direction
+      when :left  then left
+      when :right then right
+      when :up    then up
+      when :down  then down
       end
 
       changed? && insert
     end
 
-    def insert(amount : Int32 = 1)
-      amount.times do
-        pos = empty.sample
-        @board[pos[:x]][pos[:y]] = Random.rand(1..10) == 1 ? 4 : 2
-      end
-      true
+    def insert
+      pos = empty.sample
+      @board[pos[:x]][pos[:y]] = Random.rand(1..10) == 1 ? 4 : 2
     end
 
     def empty
@@ -50,35 +40,29 @@ module TwentyFortyEight
       end.flatten.to_a.compact
     end
 
-    def end?
-      !@changed && !mergeable?
+    def over?
+      @over || unchanged? && unmergeable? && (@over = true)
     end
 
     def changed?
       @changed
     end
 
-    def mergeable?
-      %w[left right up down].any? { |dir| dup.move dir }
+    def unchanged?
+      !changed?
     end
 
-    def changed(state : Bool)
-      @changed = state
+    private def unmergeable?
+      return true if @board.none? { |row| check row }
+      return transpose && true if transpose && @board.none? { |row| check row }
     end
 
-    def self.play
-      game = new
+    private def changed!
+      @changed = true
+    end
 
-      puts "Starting game"
-      until game.end?
-        direction = %w[left right up down].sample
-        game.move direction
-
-        puts "#{direction}:#{game.score}:#{game.changed?}:#{game.empty.size}"
-
-        sleep Options.get(:delay, 250).to_i / 1000
-      end
-      puts "Game ended, score: #{game.score}"
+    private def unchanged!
+      @changed = false
     end
 
     private def up
@@ -101,7 +85,11 @@ module TwentyFortyEight
       @board = @board.transpose
     end
 
-    private def merge(row : Row)
+    private def check(row)
+      (1...@size).any? { |idx| row[idx - 1] == row[idx] }
+    end
+
+    private def merge(row)
       tmp = row - [0]
       res = Row.new
 
@@ -109,7 +97,6 @@ module TwentyFortyEight
         cmp = tmp.shift?
 
         if cur == cmp
-          changed true
           mrg     = cur << 1
           res    << mrg
           @score += mrg
@@ -121,15 +108,8 @@ module TwentyFortyEight
       end
 
       res = res.concat Row.new(row.size - res.size) { 0 }
-      changed true if res != row
+      changed! if res != row
       res
-    end
-
-    private def tile(value : Int32, width = 7)
-      str = value.to_s
-      div = (width - str.size) / 2.0
-
-      ["".ljust(div.floor.to_i), str, "".rjust(div.ceil.to_i)].join
     end
   end
 end

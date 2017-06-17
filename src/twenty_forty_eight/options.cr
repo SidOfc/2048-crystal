@@ -1,32 +1,42 @@
 require "option_parser"
 
 module TwentyFortyEight
+
+  # A simple command line argument wrapper
+  #
+  # To view the available options in a terminal, simply run `2048 -h`
   module Options
     extend self
 
-    @@options = { :size => 4, :count => 1 }
+    # A `Hash(Symbol, Int32)` representing supplied options from the command line
+    @@options = {} of Symbol => Int32
 
+    # Returns the value of the `key` if found in `@@options`, make sure it exists!
     def get(key)
       @@options[key]
     end
 
+    # Returns the value of the key if it exists in `@@options` or the supplied default value
     def get(key, default)
       @@options[key]? || default
     end
 
-    OptionParser.parse! do |command|
-      command.banner = "Usage: 2048 [options]"
+    # Simply parse the options available to the program using `OptionParser`
+    #
+    # This is done automatically when the module is included, one can directly use `#get` :)
+    OptionParser.parse! do |program|
+      program.banner = "Usage: 2048 [options]"
 
-      command.on "-s SIZE", "--size=SIZE", "set the size of the board, default 4" do |size|
+      program.on "-s SIZE", "--size=SIZE", "set the size of the board" do |size|
         @@options[:size] = size.to_i
       end
 
-      command.on "-c COUNT", "--count=COUNT", "set the number of games played" do |count|
+      program.on "-c COUNT", "--count=COUNT", "set the number of games played" do |count|
         @@options[:count] = count.to_i
       end
 
-      command.on "-h", "--help", "show this help and exit" do
-        puts command
+      program.on "-h", "--help", "show this help and exit" do
+        puts program
         exit
       end
     end

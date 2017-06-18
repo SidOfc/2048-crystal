@@ -11,12 +11,12 @@ module TwentyFortyEight
     # A `Hash(Symbol, Int32)` representing supplied options from the command line
     @@options = {} of Symbol => Int32
 
-    # Returns the value of the `key` if found in `@@options`, make sure it exists!
+    # Returns the value of the `key` if found, make sure it exists!
     def get(key)
       @@options[key]
     end
 
-    # Returns the value of the key if it exists in `@@options` or the supplied default value
+    # Returns the value of the key if it exists or the supplied default value
     def get(key, default)
       @@options[key]? || default
     end

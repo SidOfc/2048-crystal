@@ -9,6 +9,7 @@ module TwentyFortyEight
   # The `Game` class does all the heavy lifting, a new game with a default size of `4` will be initialized,
   # then two pieces will be inserted in random a `#empty` position
   class Game
+    # Returns an `Int32` containing the current score
     getter :score
 
     # An `Int32` representing the initial `#score`
@@ -17,9 +18,6 @@ module TwentyFortyEight
     # A `Bool` indicating the initial state of `#changed?` and `#unchanged?`
     @changed : Bool  = false
 
-    # A `Bool` indicating the initial state of `#over?`
-    @over    : Bool  = false
-
     # Returns a `Game` of optionally specified size and inserts two values at random `#empty` positions
     def initialize(@size = 4)
       @board = Board.new(@size) { Row.new(@size) { 0 } }
@@ -27,18 +25,36 @@ module TwentyFortyEight
       2.times { insert }
     end
 
-    # Returns a `Symbol` containing any of `TwentyFortyEight::MOVES` or `Bool` false if the game remains `#unchanged?`
+    # Returns the result of executed `direction` if successful (e.g. `#changed? => true`) or nil
     def move(direction)
-      unchanged!
-
       case direction
       when :left  then left
       when :right then right
       when :up    then up
       when :down  then down
       end
+    end
 
-      changed? && insert && direction
+    # Returns the `Symbol` `:up` if the move `#changed?` the state of the game
+    def up
+      :up if transposed { left }
+    end
+
+    # Returns the `Symbol` `:down` if the move `#changed?` the state the game
+    def down
+      :down if transposed { right }
+    end
+
+    # Returns the `Symbol` `:left` if the move `#changed?` the state the game
+    def left
+      unchanged!
+      :left if @board.map! { |row| merge row } && changed? && insert
+    end
+
+    # Returns the `Symbol` `:right` if the move `#changed?` the state the game
+    def right
+      unchanged!
+      :right if @board.map! { |row| merge(row.reverse).reverse } && changed? && insert
     end
 
     # Returns the `Int32` value inserted at a random `#empty` position
@@ -47,7 +63,7 @@ module TwentyFortyEight
       @board[pos[:x]][pos[:y]] = Random.rand(1..10) == 1 ? 4 : 2
     end
 
-    # Returns an `Array(NamedTuple(x: Int32, y: Int32))`
+    # Returns an `Array(NamedTuple(x: Int32, y: Int32))` of `:x` and `:y` positions
     #
     # Running the following example:
     #
@@ -61,19 +77,7 @@ module TwentyFortyEight
     # 2
     # ```
     #
-    # Additionally, `#empty` can be used to calculate the amount of empty tiles e.g.
-    #
-    # ```
-    # puts TwentyFortyEight::Game.new.empty.size
-    # ```
-    #
-    # Will output:
-    #
-    # ```text
-    # 14
-    # ```
-    #
-    # Which is the correct result in an initialized `Game` using the default size of 4
+    # Which is the correct result in an initialized `Game` using the default size of `4`
     def empty
       @size.times.flat_map do |x|
         @size.times.compact_map { |y| {x: x, y: y} if @board[x][y] == 0 }
@@ -82,7 +86,7 @@ module TwentyFortyEight
 
     # Returns a `Bool` wether the game is `#over?`
     def over?
-      @over || unchanged? && unmergeable? && (@over = true)
+      unchanged? && unmergeable?
     end
 
     # Returns a `Bool` wether the game has `changed?` since last move
@@ -97,7 +101,7 @@ module TwentyFortyEight
 
     private def unmergeable?
       return true if @board.none? { |row| check row }
-      return transpose && true if transpose && @board.none? { |row| check row }
+      return true if transposed { @board.none? { |row| check row } }
     end
 
     private def changed!
@@ -108,24 +112,15 @@ module TwentyFortyEight
       @changed = false
     end
 
-    private def up
-      transpose && left && transpose
-    end
-
-    private def down
-      transpose && right && transpose
-    end
-
-    private def left
-      @board.map! { |row| merge row }
-    end
-
-    private def right
-      @board.map! { |row| merge(row.reverse).reverse }
-    end
-
     private def transpose
       @board = @board.transpose
+    end
+
+    private def transposed
+      transpose
+      result = with self yield
+      transpose
+      result
     end
 
     private def check(row)

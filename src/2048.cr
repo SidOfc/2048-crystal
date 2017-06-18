@@ -1,6 +1,6 @@
-require "./twenty_forty_eight/version"
-require "./twenty_forty_eight/options"
-require "./twenty_forty_eight/game"
+require "./2048/version"
+require "./2048/options"
+require "./2048/game"
 
 # This is the main container that allows you to interact with the underlying
 # `Game` class, it provides two simple methods to allow

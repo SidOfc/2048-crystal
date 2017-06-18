@@ -12,6 +12,12 @@ module TwentyFortyEight
     # Returns an `Int32` containing the current score
     getter :score
 
+    # Returns the current state of the games' `Board`
+    getter :board
+
+    # Returns an `Int32` containing the size of the current `Board`
+    getter :size
+
     # An `Int32` representing the initial `#score`
     @score   : Int32 = 0
 
@@ -20,12 +26,12 @@ module TwentyFortyEight
 
     # Returns a `Game` of optionally specified size and inserts two values at random `#empty` positions
     def initialize(@size = 4)
-      @board = Board.new(@size) { Row.new(@size) { 0 } }
+      @board = Board.new(size) { Row.new(size) { 0 } }
 
       2.times { insert }
     end
 
-    # Returns the result of executed `direction` if successful (e.g. `#changed? => true`) or nil
+    # Returns the resulting `Symbol` of executed `direction` if successful (e.g. `#changed? => true`) or nil
     def move(direction)
       case direction
       when :left  then left
@@ -48,19 +54,19 @@ module TwentyFortyEight
     # Returns the `Symbol` `:left` if the move `#changed?` the state the game
     def left
       unchanged!
-      :left if @board.map! { |row| merge row } && changed? && insert
+      :left if board.map! { |row| merge row } && changed? && insert
     end
 
     # Returns the `Symbol` `:right` if the move `#changed?` the state the game
     def right
       unchanged!
-      :right if @board.map! { |row| merge(row.reverse).reverse } && changed? && insert
+      :right if board.map! { |row| merge(row.reverse).reverse } && changed? && insert
     end
 
     # Returns the `Int32` value inserted at a random `#empty` position
     def insert
       pos = empty.sample
-      @board[pos[:x]][pos[:y]] = Random.rand(1..10) == 1 ? 4 : 2
+      board[pos[:x]][pos[:y]] = Random.rand(1..10) == 1 ? 4 : 2
     end
 
     # Returns an `Array(NamedTuple(x: Int32, y: Int32))` of `:x` and `:y` positions
@@ -79,8 +85,8 @@ module TwentyFortyEight
     #
     # Which is the correct result in an initialized `Game` using the default size of `4`
     def empty
-      @size.times.flat_map do |x|
-        @size.times.compact_map { |y| {x: x, y: y} if @board[x][y] == 0 }
+      size.times.flat_map do |x|
+        size.times.compact_map { |y| {x: x, y: y} if board[x][y] == 0 }
       end.to_a
     end
 
@@ -100,8 +106,8 @@ module TwentyFortyEight
     end
 
     private def unmergeable?
-      return true if @board.none? { |row| check row }
-      return true if transposed { @board.none? { |row| check row } }
+      return true if board.none? { |row| check row }
+      return true if transposed { board.none? { |row| check row } }
     end
 
     private def changed!
@@ -124,7 +130,7 @@ module TwentyFortyEight
     end
 
     private def check(row)
-      (1...@size).any? { |idx| row[idx - 1] == row[idx] }
+      (1...size).any? { |idx| row[idx - 1] == row[idx] }
     end
 
     private def merge(row)

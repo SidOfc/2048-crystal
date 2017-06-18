@@ -2,11 +2,11 @@ require "./twenty_forty_eight/version"
 require "./twenty_forty_eight/options"
 require "./twenty_forty_eight/game"
 
-# This is a ported version of my implementation of [2048 in Ruby](https://rubygems.org/gems/TwentyFortyEight)
-# It only implements a small subset of its functionality at the moment, I decided to create a port because
-# I wanted to have some fun with a compiled language for a change and Crystal so far has been awesome to write in!
-#
-# see `Options` to find out more or run `2048 -h` to see a list of options
+# This is the main container that allows you to interact with the underlying
+# `Game` class, it provides two simple methods to allow
+# for automatic gameplay and controlling gameplay using a block. Sizes of `#sample`
+# games are defined by `SIZE` which in turn can be defined on the
+# command line, see `Options` or `2048 -h` for more information
 module TwentyFortyEight
   extend self
 
@@ -37,7 +37,7 @@ module TwentyFortyEight
   #
   # This method plays a game with a specified block,
   # the game is the receiver of methods within the block and
-  # you are responsible for calling `#move` with one of `MOVES` or calling
+  # you are responsible for calling `#move` with one of `:left`, `:right`, `:up` and `:down` or
   # a directional move e.g. `#down`, `#left`, `#right` or `#up`.
   #
   # **The game ends when the block returns a falsy value!**
@@ -50,7 +50,7 @@ module TwentyFortyEight
   #
   # Will output:
   #
-  # ```
+  # ```text
   # 4052
   # ```
   def sample

@@ -1,6 +1,10 @@
 # twenty_forty_eight
 
-TODO: Write a description here
+This is a ported version of my implementation of [2048 in Ruby](https://rubygems.org/gems/TwentyFortyEight)
+It only implements a small subset of its functionality at the moment, I decided to create a port because
+I wanted to have some fun with a compiled language for a change and Crystal so far has been awesome to write in!
+
+A next step will be to add a TUI so that one can play the game within a terminal, using keys to move, quit and restart
 
 ## Installation
 

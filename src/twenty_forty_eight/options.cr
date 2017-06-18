@@ -4,7 +4,8 @@ module TwentyFortyEight
 
   # A simple command line argument wrapper
   #
-  # To view the available options in a terminal, simply run `2048 -h`
+  # The only usable keys for `#get` at the moment are `:size` and `:count`. No other options
+  # exist yet. To learn how to set these from a command line, run `2048 -h`
   module Options
     extend self
 
@@ -12,11 +13,50 @@ module TwentyFortyEight
     @@options = {} of Symbol => Int32
 
     # Returns the value of the `key` if found, make sure it exists!
+    #
+    # Given the following command:
+    #
+    # ```text
+    # $ 2048 -s 6 -c 10
+    # ```
+    #
+    # With the following code:
+    #
+    # ```
+    # puts TwentyFortyEight::Options.get :size
+    # puts TwentyFortyEight::Options.get :count
+    # ```
+    #
+    # Will output respectively:
+    #
+    # ```text
+    # 6
+    # 10
+    # ```
     def get(key)
       @@options[key]
     end
 
     # Returns the value of the key if it exists or the supplied default value
+    #
+    # Given the following command:
+    #
+    # ```text
+    # $ 2048 -c 10
+    # ```
+    #
+    # With the following code:
+    #
+    # ```
+    # puts TwentyFortyEight::Options.get :size, 4
+    # ```
+    #
+    # Will output respectively:
+    #
+    # ```text
+    # 4
+    # 10
+    # ```
     def get(key, default)
       @@options[key]? || default
     end

@@ -1,3 +1,5 @@
+require "colorize"
+
 require "./2048/version"
 require "./2048/options"
 require "./2048/game"
@@ -11,7 +13,7 @@ module TwentyFortyEight
   extend self
 
   # `SIZE` An `Int32` representing the size of a `Board`
-  SIZE = Options.get :size, 4
+  SIZE = Options.get(:size, 4).to_i
 
   # Returns a finished `Game` with a `Board` of `SIZE`
   #
@@ -55,13 +57,21 @@ module TwentyFortyEight
   # ```
   def sample
     game = Game.new SIZE
+    move = nil
 
-    while with game yield; end
+    loop { break unless move = with game yield move }
 
     game
   end
 end
 
-TwentyFortyEight::Options.get(:count, 10).times do
-  puts TwentyFortyEight.sample.score
+mapping = {"l" => :left, "r" => :right, "u" => :up, "d" => :down}
+count = TwentyFortyEight::Options.get(:count, 1).to_i
+seq   = TwentyFortyEight::Options.get(:sequence, nil)
+seq   = seq.to_s.split(',').map { |c| mapping[c] } if seq
+
+if seq
+  count.times { puts TwentyFortyEight.sample { seq.find { |dir| move dir } }.score }
+else
+  count.times { puts TwentyFortyEight.sample.score }
 end

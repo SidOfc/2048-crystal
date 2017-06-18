@@ -10,7 +10,7 @@ module TwentyFortyEight
     extend self
 
     # A `Hash(Symbol, Int32)` representing supplied options from the command line
-    @@options = {} of Symbol => Int32
+    @@options = {} of Symbol => Int32 | String
 
     # Returns the value of the `key` if found, make sure it exists!
     #
@@ -73,6 +73,10 @@ module TwentyFortyEight
 
       program.on "-c COUNT", "--count=COUNT", "set the number of games played" do |count|
         @@options[:count] = count.to_i
+      end
+
+      program.on "-a SEQUENCE", "--auto=SEQUENCE", "sequence like: dlru -> down left right up, missing keys will be appended to prevent getting stuck" do |text|
+        @@options[:sequence] = text.chars.concat(['l', 'r', 'u', 'd'] - text.chars).join ','
       end
 
       program.on "-h", "--help", "show this help and exit" do

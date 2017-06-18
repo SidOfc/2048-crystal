@@ -31,6 +31,10 @@ module TwentyFortyEight
       2.times { insert }
     end
 
+    def to_hash
+      {score: score, board: board}
+    end
+
     # Returns the resulting `Symbol` of executed `direction` if successful (e.g. `#changed? => true`) or nil
     def move(direction)
       case direction

@@ -5,8 +5,8 @@ authors:
   - Sidney Liebrand <sidneyliebrand@gmail.com>
 
 targets:
-  twenty_forty_eight:
-    main: src/twenty_forty_eight.cr
+  2048:
+    main: src/2048.cr
 
 crystal: 0.22.0
 

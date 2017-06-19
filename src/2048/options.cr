@@ -4,7 +4,7 @@ module TwentyFortyEight
 
   # A simple command line argument wrapper
   #
-  # The only usable keys for `#get` at the moment are `:size` and `:count`. No other options
+  # The only usable keys for `#get` at the moment are `:size`, `:count` and `:sequence`. No other options
   # exist yet. To learn how to set these from a command line, run `2048 -h`
   module Options
     extend self
@@ -49,9 +49,10 @@ module TwentyFortyEight
     #
     # ```
     # puts TwentyFortyEight::Options.get :size, 4
+    # puts TwentyFortyEight::Options.get :count, 1
     # ```
     #
-    # Will output respectively:
+    # Will output:
     #
     # ```text
     # 4

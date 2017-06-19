@@ -31,10 +31,6 @@ module TwentyFortyEight
       2.times { insert }
     end
 
-    def to_hash
-      {score: score, board: board}
-    end
-
     # Returns the resulting `Symbol` of executed `direction` if successful (e.g. `#changed? => true`) or nil
     def move(direction)
       case direction
@@ -86,8 +82,6 @@ module TwentyFortyEight
     # ```text
     # 2
     # ```
-    #
-    # Which is the correct result in an initialized `Game` using the default size of `4`
     def empty
       size.times.flat_map do |x|
         size.times.compact_map { |y| {x: x, y: y} if board[x][y] == 0 }

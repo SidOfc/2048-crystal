@@ -17,10 +17,9 @@ module TwentyFortyEight
 
   # Returns a finished `Game` with a `Board` of `SIZE`
   #
-  # The meaning of 'finished' here is simply that the game is `Game#over?`
-  # Moves are selected in order of `MOVES` until a move has returned it's value.
-  # To give a short example, if `:down` isn't possible, it will try `:left` afterwards.
-  # This process is repeated until all available moves return false
+  # Finished simply means `Game#over?`, the game is played automatically
+  # by trying each move in order: `Game#down`, `Game#left`, `Game#right` and finally `Game#up`.
+  # This process is repeated until no more moves are possible.
   #
   # ```
   # puts TwentyFortyEight.sample.score
@@ -38,11 +37,12 @@ module TwentyFortyEight
   # Returns a finished `Game` with a `Board` of `SIZE`
   #
   # This method plays a game with a specified block,
-  # the game is the receiver of methods within the block and
-  # you are responsible for calling `#move` with one of `:left`, `:right`, `:up` and `:down` or
-  # a directional move e.g. `#down`, `#left`, `#right` or `#up`.
+  # the game is the receiver of methods within that block.
   #
-  # **The game ends when the block returns a falsy value!**
+  # you are responsible for calling `Game#move` with one of `:left`, `:right`, `:up` and `:down` or
+  # a directional move e.g. `Game#down`, `Game#left`, `Game#right` or `Game#up`.
+  #
+  # A game ends automatically once `Game#over?` is true.
   #
   # An example that matches the regular `#sample`:
   #
@@ -55,22 +55,46 @@ module TwentyFortyEight
   # ```text
   # 4052
   # ```
+  #
+  # A call to any of the available moves in a game will return it's direction as a `Symbol` if successful
+  # This means you can find out per move, which direction was moved using:
+  #
+  # ```
+  # TwentyFortyEight.sample { moved = down || left || right || up; puts moved }
+  # ```
+  #
+  # Will output
+  #
+  # ```text
+  # left
+  # right
+  # down
+  # down
+  # ... snipped ...
+  # up
+  # ```
+  #
+  # also, getters such as `Game#size` and `Game#board` are callable from within the block.
+  # What they represent is up to you, depending on wether you call these _before_ or _after_
+  # you've executed a successful move.
   def sample
     game = Game.new SIZE
-    move = nil
 
-    loop { break unless move = with game yield move }
+    until game.over?
+      with game yield
+    end
 
     game
   end
 end
 
-mapping = {"l" => :left, "r" => :right, "u" => :up, "d" => :down}
 count = TwentyFortyEight::Options.get(:count, 1).to_i
 seq   = TwentyFortyEight::Options.get(:sequence, nil)
-seq   = seq.to_s.split(',').map { |c| mapping[c] } if seq
 
-if seq
+if seq && seq.is_a? Array
+  mapping = {"l" => :left, "r" => :right, "u" => :up, "d" => :down}
+  seq     = seq.to_s.split(',').map { |c| mapping[c] }
+
   count.times { puts TwentyFortyEight.sample { seq.find { |dir| move dir } }.score }
 else
   count.times { puts TwentyFortyEight.sample.score }

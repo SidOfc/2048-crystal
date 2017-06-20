@@ -29,6 +29,13 @@ module TwentyFortyEight
     sample { down || left || right || up }
   end
 
+  def samples
+    options.count.times do
+      game = sample
+      puts game.score if options.verbose
+    end
+  end
+
   # Returns a finished `Game` with a `Board` of `SIZE`
   #
   # This method plays a game with a specified block,
@@ -83,3 +90,4 @@ module TwentyFortyEight
   end
 end
 
+TwentyFortyEight.samples

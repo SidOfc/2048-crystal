@@ -5,7 +5,7 @@ require "./2048/options"
 require "./2048/game"
 
 # This is the main container that allows you to interact with the underlying
-# `Game` class, it provides two simple methods to allow
+# `Game` struct, it provides two simple methods to allow
 # for automatic gameplay and controlling gameplay using a block. Sizes of `#sample`
 # games are defined by `SIZE` which in turn can be defined on the
 # command line, see `Options` or `2048 -h` for more information

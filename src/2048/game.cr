@@ -6,9 +6,9 @@ module TwentyFortyEight
   # `Board` is an alias of type `Array(Row)`, it is the internal container of the entire field
   alias Board = Array(Row)
 
-  # The `Game` class does all the heavy lifting, a new game with a default size of `4` will be initialized,
+  # The `Game` struct does all the heavy lifting, a new game with a default size of `4` will be initialized,
   # then two pieces will be inserted in random a `#empty` position
-  class Game
+  struct Game
     # Returns an `Int32` containing the current score
     getter :score
 
@@ -100,12 +100,15 @@ module TwentyFortyEight
 
     # Returns a `Bool` - the inverted of `#changed?`
     def unchanged?
-      !changed?
+      !@changed
+    end
+
+    private def mergeable?(row)
+      (1...size).any? { |idx| row[idx - 1] == row[idx] }
     end
 
     private def unmergeable?
-      return true if board.none? { |row| check row }
-      return true if transposed { board.none? { |row| check row } }
+      board.none? { |row| mergeable? row } || transposed { board.none? { |row| mergeable? row } }
     end
 
     private def changed!
@@ -116,19 +119,11 @@ module TwentyFortyEight
       @changed = false
     end
 
-    private def transpose
-      @board = @board.transpose
-    end
-
     private def transposed
-      transpose
+      @board = @board.transpose
       result = with self yield
-      transpose
+      @board = @board.transpose
       result
-    end
-
-    private def check(row)
-      (1...size).any? { |idx| row[idx - 1] == row[idx] }
     end
 
     private def merge(row)

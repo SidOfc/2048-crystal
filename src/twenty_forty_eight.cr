@@ -1,5 +1,3 @@
-require "colorize"
-
 require "./twenty_forty_eight/version"
 require "./twenty_forty_eight/options"
 require "./twenty_forty_eight/game"

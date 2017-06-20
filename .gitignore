@@ -2,4 +2,4 @@ doc/
 lib/
 bin/
 .shards/
-.sample.cr
+sample.cr

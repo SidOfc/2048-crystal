@@ -127,8 +127,7 @@ module TwentyFortyEight
     end
 
     private def merge(row)
-      tmp = row - [0]
-      res = Row.new
+      tmp, res = row - [0], Row.new
 
       while cur = tmp.shift?
         cmp = tmp.shift?
@@ -144,8 +143,7 @@ module TwentyFortyEight
         end
       end
 
-      res = res.concat Row.new(row.size - res.size) { 0 }
-      changed! if res != row
+      changed! if row != (res = res += Row.new(size - res.size) { 0 })
       res
     end
   end

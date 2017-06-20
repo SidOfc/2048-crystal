@@ -1,5 +1,5 @@
-/doc/
-/lib/
-/bin/
-/.shards/
 doc/
+lib/
+bin/
+.shards/
+.sample.cr

@@ -24,7 +24,7 @@ module TwentyFortyEight
     getter :sequence
 
     # If need be, all the default settings can be set in the constructor
-    def initialize(@size = 4, @count = 1, @verbose = false, @sequence : String? = nil)
+    def initialize(@size = 4, @count = 0, @verbose = false, @sequence : String? = nil)
       sz, ct, vb, sq = @size, @count, @verbose, @sequence
 
       OptionParser.parse! do |program|

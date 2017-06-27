@@ -1,5 +1,4 @@
 require "./twenty_forty_eight/version"
-require "./twenty_forty_eight/options"
 require "./twenty_forty_eight/game"
 
 # This is the main container that allows you to interact with the underlying
@@ -10,7 +9,7 @@ require "./twenty_forty_eight/game"
 module TwentyFortyEight
   extend self
 
-  # Returns a finished `Game` with a `Board` of `SIZE`
+  # Returns a finished `Game` with a `Board` of `size` (optional, default: `4`)
   #
   # Finished simply means `Game#over?`, the game is played automatically
   # by trying each move in order: `Game#down`, `Game#left`, `Game#right` and finally `Game#up`.
@@ -25,18 +24,11 @@ module TwentyFortyEight
   # ```text
   # 1234
   # ```
-  def sample
-    sample { down || left || right || up }
+  def sample(size = 4)
+    sample(size) { down || left || right || up }
   end
 
-  def samples
-    options.count.times do
-      game = sample
-      puts game.score if options.verbose
-    end
-  end
-
-  # Returns a finished `Game` with a `Board` of `SIZE`
+  # Returns a finished `Game` with a `Board` of `size` (optional, default: `4`)
   #
   # This method plays a game with a specified block,
   # the game is the receiver of methods within that block.
@@ -79,8 +71,8 @@ module TwentyFortyEight
   # also, getters such as `Game#size` and `Game#board` are callable from within the block.
   # What they represent is up to you, depending on wether you call these _before_ or _after_
   # you've executed a successful move.
-  def sample
-    game = Game.new options.size
+  def sample(size = 4)
+    game = Game.new size
 
     until game.over?
       with game yield
@@ -89,5 +81,3 @@ module TwentyFortyEight
     game
   end
 end
-
-TwentyFortyEight.samples

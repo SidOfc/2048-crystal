@@ -6,7 +6,7 @@ authors:
 
 targets:
   2048:
-    main: src/twenty_forty_eight.cr
+    main: src/2048.cr
 
 crystal: 0.22.0
 

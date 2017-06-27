@@ -34,10 +34,10 @@ module TwentyFortyEight
     # Returns the resulting `Symbol` of executed `direction` if successful (e.g. `#changed? => true`) or nil
     def move(direction)
       case direction
-      when :left  then left
-      when :right then right
-      when :up    then up
-      when :down  then down
+      when 'l', :left  then left
+      when 'r', :right then right
+      when 'r', :up    then up
+      when 'd', :down  then down
       end
     end
 

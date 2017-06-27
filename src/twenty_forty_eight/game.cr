@@ -143,7 +143,7 @@ module TwentyFortyEight
         end
       end
 
-      changed! if row != (res = res += Row.new(size - res.size) { 0 })
+      changed! if row != (res += Row.new(size - res.size) { 0 })
       res
     end
   end

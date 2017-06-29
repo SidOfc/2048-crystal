@@ -24,11 +24,20 @@ module TwentyFortyEight
     # A `Bool` indicating the initial state of `#changed?` and `#unchanged?`
     @changed : Bool  = false
 
-    # Returns a `Game` of optionally specified size and inserts two values at random `#empty` positions
-    def initialize(@size = 4)
+    # An `Array(Array(Int32))` matrix that contains the state of the board
+    @board   : Board
+
+    # Returns a `Game` of specified size and inserts two values at random `#empty` positions
+    def initialize(@size : Int32 = 4)
       @board = Board.new(size) { Row.new(size) { 0 } }
 
       2.times { insert }
+    end
+
+    # Returns a `Game` starting with specified `@board` of type `Array(Array(Int32))`, no values will be inserted
+    # and `#size` will be set to `@board.size`
+    def initialize(@board)
+      @size = @board.size
     end
 
     # Returns the resulting `Symbol` of executed `direction` if successful (e.g. `#changed? => true`) or nil
@@ -108,7 +117,7 @@ module TwentyFortyEight
     end
 
     private def unmergeable?
-      board.none? { |row| mergeable? row } || transposed { board.none? { |row| mergeable? row } }
+      !(board.any? { |row| mergeable? row } || transposed { board.any? { |row| mergeable? row } })
     end
 
     private def changed!

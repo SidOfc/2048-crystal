@@ -8,12 +8,12 @@ verbose = TwentyFortyEight.options.verbose
 
 if seq
   count.times do
-    game = TwentyFortyEight.sample { seq.find { |dir| move dir } }
+    game = TwentyFortyEight.sample(size) { seq.find { |dir| move dir } }
     puts game.score if verbose
   end
 else
   count.times do
-    game = TwentyFortyEight.sample
+    game = TwentyFortyEight.sample(size)
     puts game.score if verbose
   end
 end

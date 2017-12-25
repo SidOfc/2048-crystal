@@ -8,19 +8,23 @@ A next step will be to add a TUI so that one can play the game within a terminal
 
 ## Installation
 
-TODO: Write installation instructions here
+To install, add it as a dependency to your `shards.yml`:
+
+~~~crystal
+dependencies:
+    twenty_forty_eight:
+        github: SidOfc/2048-crystal
+        branch: master
+~~~
 
 ## Usage
 
-TODO: Write usage instructions here
-
-## Development
-
-TODO: Write development instructions here
+After installing, the module `TwentyFortyEight` will be available to use.
+See the [documentation](https://sidofc.github.io/2048-crystal) for more details.
 
 ## Contributing
 
-1. Fork it ( https://github.com/[your-github-name]/twenty_forty_eight/fork )
+1. Fork it ( https://github.com/SidOfc/twenty_forty_eight/fork )
 2. Create your feature branch (git checkout -b my-new-feature)
 3. Commit your changes (git commit -am 'Add some feature')
 4. Push to the branch (git push origin my-new-feature)
@@ -28,4 +32,4 @@ TODO: Write development instructions here
 
 ## Contributors
 
-- [[your-github-name]](https://github.com/[your-github-name]) Sidney Liebrand - creator, maintainer
+- [SidOfc](https://github.com/SidOfc) Sidney Liebrand - creator, maintainer

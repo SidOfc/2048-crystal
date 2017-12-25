@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta id="repository-name" content="github.com/SidOfc/2048-crystal">
+  <link href="../css/style.css" rel="stylesheet" type="text/css" />
+  <script type="text/javascript" src="../js/doc.js"></script>
+  <title>TwentyFortyEight::Options - github.com/SidOfc/2048-crystal</title>
+</head>
+<body>
+
+<div id="types-list">
+  <div id="search-box">
+    <input type="search" id="search-input" placeholder="Search...">
+  </div>
+
+  <ul>
+    <li><a href="../index.html">README</a></li>
+  </ul>
+
+  <ul>
+  
+  <li class="parent open current" data-id="github.com/SidOfc/2048-crystal/TwentyFortyEight" data-name="twentyfortyeight">
+      <a href="../TwentyFortyEight.html">TwentyFortyEight</a>
+      
+        <ul>
+  
+  <li class=" " data-id="github.com/SidOfc/2048-crystal/TwentyFortyEight/Board" data-name="twentyfortyeight::board">
+      <a href="../TwentyFortyEight/Board.html">Board</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/SidOfc/2048-crystal/TwentyFortyEight/Game" data-name="twentyfortyeight::game">
+      <a href="../TwentyFortyEight/Game.html">Game</a>
+      
+    </li>
+  
+  <li class=" current" data-id="github.com/SidOfc/2048-crystal/TwentyFortyEight/Options" data-name="twentyfortyeight::options">
+      <a href="../TwentyFortyEight/Options.html">Options</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/SidOfc/2048-crystal/TwentyFortyEight/Row" data-name="twentyfortyeight::row">
+      <a href="../TwentyFortyEight/Row.html">Row</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+</div>
+
+<div id="main-content">
+<h1 class="type-name">
+
+  <span class="kind">struct</span> TwentyFortyEight::Options
+
+</h1>
+
+
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="../TwentyFortyEight/Options.html">TwentyFortyEight::Options</a></li><li class="superclass">Struct</li><li class="superclass">Value</li><li class="superclass">Object</li></ul>
+
+
+
+
+  <h2>Overview</h2>
+
+  <p>A simple command line argument wrapper</p>
+
+<p>See the defined instance methods for possible options
+exist yet. To learn how to set these from a command line, run <code>2048 -h</code></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2>Defined in:</h2>
+  
+    
+      <a href="https://github.com/SidOfc/2048-crystal/blob/bb885e3b030dfd24a7241e3ae9fa17cdbbb74a26/src/twenty_forty_eight/options.cr#L13" target="_blank">twenty_forty_eight/options.cr</a>
+    
+    <br/>
+  
+
+
+
+
+
+  <h2>Constructors</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#new%28size%3D4%2Ccount%3D1%2Cverbose%3Dtrue%2Csequence%3AArray%28Char%29%3F%3Dnil%29-class-method" class="signature"><strong>.new</strong>(size = <span class="n">4</span>, count = <span class="n">1</span>, verbose = <span class="n">true</span>, sequence : Array(Char)? = <span class="n">nil</span>)</a>
+        
+          <div class="summary"><p>If need be, all the default settings can be set in the constructor</p></div>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+  <h2>Instance Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#count%3AInt32-instance-method" class="signature"><strong>#count</strong> : Int32</a>
+        
+          <div class="summary"><p>Returns <code>Int32</code> count of games to be played</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#sequence%3AArray%28Char%29%3F-instance-method" class="signature"><strong>#sequence</strong> : Array(Char)?</a>
+        
+          <div class="summary"><p>Returns <code>(Array(Char) | Nil)</code> a sequence like <code>['d', 'l', 'r', 'u']</code> to perform moves in preference: down, left, right, up</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#size%3AInt32-instance-method" class="signature"><strong>#size</strong> : Int32</a>
+        
+          <div class="summary"><p>Returns <code>Int32</code> size of the board</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#verbose%3ABool-instance-method" class="signature"><strong>#verbose</strong> : Bool</a>
+        
+          <div class="summary"><p>Returns <code>Bool</code> true or false for printing output</p></div>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+<div class="methods-inherited">
+  
+    
+
+
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+    
+
+
+  
+</div>
+
+
+  <h2>Constructor Detail</h2>
+  
+    <div class="entry-detail" id="new(size=4,count=1,verbose=true,sequence:Array(Char)?=nil)-class-method">
+      <div class="signature">
+        
+        def self.<strong>new</strong>(size = <span class="n">4</span>, count = <span class="n">1</span>, verbose = <span class="n">true</span>, sequence : Array(Char)? = <span class="n">nil</span>)
+
+        <a class="method-permalink" href="#new%28size%3D4%2Ccount%3D1%2Cverbose%3Dtrue%2Csequence%3AArray%28Char%29%3F%3Dnil%29-class-method">#</a>
+      </div>
+      
+        <div class="doc"><p>If need be, all the default settings can be set in the constructor</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/SidOfc/2048-crystal/blob/bb885e3b030dfd24a7241e3ae9fa17cdbbb74a26/src/twenty_forty_eight/options.cr#L27" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+
+
+  <h2>Instance Method Detail</h2>
+  
+    <div class="entry-detail" id="count:Int32-instance-method">
+      <div class="signature">
+        
+        def <strong>count</strong> : Int32
+
+        <a class="method-permalink" href="#count%3AInt32-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Returns <code>Int32</code> count of games to be played</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/SidOfc/2048-crystal/blob/bb885e3b030dfd24a7241e3ae9fa17cdbbb74a26/src/twenty_forty_eight/options.cr#L18" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="sequence:Array(Char)?-instance-method">
+      <div class="signature">
+        
+        def <strong>sequence</strong> : Array(Char)?
+
+        <a class="method-permalink" href="#sequence%3AArray%28Char%29%3F-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Returns <code>(Array(Char) | Nil)</code> a sequence like <code>['d', 'l', 'r', 'u']</code> to perform moves in preference: down, left, right, up</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/SidOfc/2048-crystal/blob/bb885e3b030dfd24a7241e3ae9fa17cdbbb74a26/src/twenty_forty_eight/options.cr#L24" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="size:Int32-instance-method">
+      <div class="signature">
+        
+        def <strong>size</strong> : Int32
+
+        <a class="method-permalink" href="#size%3AInt32-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Returns <code>Int32</code> size of the board</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/SidOfc/2048-crystal/blob/bb885e3b030dfd24a7241e3ae9fa17cdbbb74a26/src/twenty_forty_eight/options.cr#L15" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="verbose:Bool-instance-method">
+      <div class="signature">
+        
+        def <strong>verbose</strong> : Bool
+
+        <a class="method-permalink" href="#verbose%3ABool-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Returns <code>Bool</code> true or false for printing output</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/SidOfc/2048-crystal/blob/bb885e3b030dfd24a7241e3ae9fa17cdbbb74a26/src/twenty_forty_eight/options.cr#L21" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+
+</div>
+
+</body>
+</html>

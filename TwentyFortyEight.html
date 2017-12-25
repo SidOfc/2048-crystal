@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta id="repository-name" content="github.com/SidOfc/2048-crystal">
+  <link href="css/style.css" rel="stylesheet" type="text/css" />
+  <script type="text/javascript" src="js/doc.js"></script>
+  <title>TwentyFortyEight - github.com/SidOfc/2048-crystal</title>
+</head>
+<body>
+
+<div id="types-list">
+  <div id="search-box">
+    <input type="search" id="search-input" placeholder="Search...">
+  </div>
+
+  <ul>
+    <li><a href="index.html">README</a></li>
+  </ul>
+
+  <ul>
+  
+  <li class="parent open current" data-id="github.com/SidOfc/2048-crystal/TwentyFortyEight" data-name="twentyfortyeight">
+      <a href="TwentyFortyEight.html">TwentyFortyEight</a>
+      
+        <ul>
+  
+  <li class=" " data-id="github.com/SidOfc/2048-crystal/TwentyFortyEight/Board" data-name="twentyfortyeight::board">
+      <a href="TwentyFortyEight/Board.html">Board</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/SidOfc/2048-crystal/TwentyFortyEight/Game" data-name="twentyfortyeight::game">
+      <a href="TwentyFortyEight/Game.html">Game</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/SidOfc/2048-crystal/TwentyFortyEight/Options" data-name="twentyfortyeight::options">
+      <a href="TwentyFortyEight/Options.html">Options</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/SidOfc/2048-crystal/TwentyFortyEight/Row" data-name="twentyfortyeight::row">
+      <a href="TwentyFortyEight/Row.html">Row</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+</div>
+
+<div id="main-content">
+<h1 class="type-name">
+
+  <span class="kind">module</span> TwentyFortyEight
+
+</h1>
+
+
+
+
+
+  <h2>Overview</h2>
+
+  <p>This is the main container that allows you to interact with the underlying
+<code><a href="TwentyFortyEight/Game.html">Game</a></code> struct, it provides two simple methods to allow
+for automatic gameplay and controlling gameplay using a block. Sizes of <code><a href="TwentyFortyEight.html#sample%28%2Aargs%29-instance-method">#sample</a></code>
+games are defined by <code>SIZE</code> which in turn can be defined on the
+command line, see <code><a href="TwentyFortyEight/Options.html">Options</a></code> or <code>2048 -h</code> for more information</p>
+
+
+
+
+
+
+
+  <h2>Extended Modules</h2>
+  <ul class="other-types-list">
+  
+    <li class="other-type"><a href="TwentyFortyEight.html">TwentyFortyEight</a></li>
+  
+  </ul>
+
+
+
+
+
+
+
+
+  <h2>Defined in:</h2>
+  
+    
+      <a href="https://github.com/SidOfc/2048-crystal/blob/bb885e3b030dfd24a7241e3ae9fa17cdbbb74a26/src/twenty_forty_eight/version.cr#L1" target="_blank">twenty_forty_eight/version.cr</a>
+    
+    <br/>
+  
+    
+      <a href="https://github.com/SidOfc/2048-crystal/blob/bb885e3b030dfd24a7241e3ae9fa17cdbbb74a26/src/twenty_forty_eight/game.cr#L1" target="_blank">twenty_forty_eight/game.cr</a>
+    
+    <br/>
+  
+    
+      <a href="https://github.com/SidOfc/2048-crystal/blob/bb885e3b030dfd24a7241e3ae9fa17cdbbb74a26/src/twenty_forty_eight.cr#L9" target="_blank">twenty_forty_eight.cr</a>
+    
+    <br/>
+  
+    
+      <a href="https://github.com/SidOfc/2048-crystal/blob/bb885e3b030dfd24a7241e3ae9fa17cdbbb74a26/src/twenty_forty_eight/options.cr#L3" target="_blank">twenty_forty_eight/options.cr</a>
+    
+    <br/>
+  
+
+
+
+  
+    <h2>Constant Summary</h2>
+  
+  <dl>
+    
+      <dt class="entry-const" id="VERSION">
+        <strong>VERSION</strong> = <code><span class="s">&quot;0.1.0&quot;</span></code>
+      </dt>
+      
+    
+  </dl>
+
+
+
+
+
+  <h2>Class Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#options-class-method" class="signature"><strong>.options</strong></a>
+        
+          <div class="summary"><p>Stores an instance op <code><a href="TwentyFortyEight/Options.html">Options</a></code> with parsed command line arguments</p></div>
+        
+      </li>
+    
+  </ul>
+
+
+
+  <h2>Instance Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#sample%28%2Aargs%29-instance-method" class="signature"><strong>#sample</strong>(*args)</a>
+        
+          <div class="summary"><p>Returns a finished <code><a href="TwentyFortyEight/Game.html">Game</a></code> with a <code><a href="TwentyFortyEight/Board.html">Board</a></code> of specified size <code>Int32</code> or input <code>Array(Array(Int32))</code></p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#sample%28%2Aargs%2C%26block%29-instance-method" class="signature"><strong>#sample</strong>(*args, &block)</a>
+        
+          <div class="summary"><p>Same as <code><a href="TwentyFortyEight.html#sample%28%2Aargs%29-instance-method">#sample(*args)</a></code> but plays the game with provided block, the game is the receiver of methods within the supplied block.</p></div>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+<div class="methods-inherited">
+  
+</div>
+
+
+
+
+  <h2>Class Method Detail</h2>
+  
+    <div class="entry-detail" id="options-class-method">
+      <div class="signature">
+        
+        def self.<strong>options</strong>
+
+        <a class="method-permalink" href="#options-class-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Stores an instance op <code><a href="TwentyFortyEight/Options.html">Options</a></code> with parsed command line arguments</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/SidOfc/2048-crystal/blob/bb885e3b030dfd24a7241e3ae9fa17cdbbb74a26/src/twenty_forty_eight/options.cr#L5" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+  <h2>Instance Method Detail</h2>
+  
+    <div class="entry-detail" id="sample(*args)-instance-method">
+      <div class="signature">
+        
+        def <strong>sample</strong>(*args)
+
+        <a class="method-permalink" href="#sample%28%2Aargs%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Returns a finished <code><a href="TwentyFortyEight/Game.html">Game</a></code> with a <code><a href="TwentyFortyEight/Board.html">Board</a></code> of specified size <code>Int32</code> or input <code>Array(Array(Int32))</code></p>
+
+<p>If no arguments are given, a <code><a href="TwentyFortyEight/Board.html">Board</a></code> will be initialized with a default <code>size</code> of <code>4</code> and 2 values
+will be inserted a random <code>#empty</code> positions on the board. If an input board is specified by supplying
+a <code>Array(Array(Int32))</code> then no values will be inserted prior to playing the game.</p>
+
+<p><strong>NOTE</strong> This means that if a board containing only <code>0</code> as values for all fields is passed, the game will never end.
+This happens because the <code>#over?</code> method short circuits when the board isn't full and because of the fact that
+for a value to be inserted, the board has to have <code>change?</code> which it will not have when only moving empty values.</p>
+
+<p>Finished simply means <code><a href="TwentyFortyEight/Game.html#over%3F-instance-method">Game#over?</a></code>, the game is played automatically
+by trying each move in order: <code><a href="TwentyFortyEight/Game.html#down-instance-method">Game#down</a></code>, <code><a href="TwentyFortyEight/Game.html#left-instance-method">Game#left</a></code>, <code><a href="TwentyFortyEight/Game.html#right-instance-method">Game#right</a></code> and finally <code><a href="TwentyFortyEight/Game.html#up-instance-method">Game#up</a></code>.
+This process is repeated until no more moves are possible.</p>
+
+<pre><code>puts <span class="t">TwentyFortyEight</span>.sample.score</code></pre>
+
+<p>Will output:</p>
+
+<pre><code class='language-text'>1234</code></pre></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/SidOfc/2048-crystal/blob/bb885e3b030dfd24a7241e3ae9fa17cdbbb74a26/src/twenty_forty_eight.cr#L35" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="sample(*args,&amp;block)-instance-method">
+      <div class="signature">
+        
+        def <strong>sample</strong>(*args, &block)
+
+        <a class="method-permalink" href="#sample%28%2Aargs%2C%26block%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Same as <code><a href="TwentyFortyEight.html#sample%28%2Aargs%29-instance-method">#sample(*args)</a></code> but plays the game with provided block, the game is the receiver of methods within the supplied block.</p>
+
+<p>you are responsible for calling <code><a href="TwentyFortyEight/Game.html#move%28direction%29-instance-method">Game#move</a></code> with one of <code>:left</code>, <code>:right</code>, <code>:up</code> and <code>:down</code> or
+a directional move e.g. <code><a href="TwentyFortyEight/Game.html#down-instance-method">Game#down</a></code>, <code><a href="TwentyFortyEight/Game.html#left-instance-method">Game#left</a></code>, <code><a href="TwentyFortyEight/Game.html#right-instance-method">Game#right</a></code> or <code><a href="TwentyFortyEight/Game.html#up-instance-method">Game#up</a></code>.</p>
+
+<p>A game ends automatically once <code><a href="TwentyFortyEight/Game.html#over%3F-instance-method">Game#over?</a></code> is true.</p>
+
+<p>An example that matches the regular <code><a href="TwentyFortyEight.html#sample%28%2Aargs%29-instance-method">#sample</a></code>:</p>
+
+<pre><code>puts <span class="t">TwentyFortyEight</span>.sample { down || left || right || up }.score</code></pre>
+
+<p>Will output:</p>
+
+<pre><code class='language-text'>4052</code></pre>
+
+<p>A call to any of the available moves in a game will return it's direction as a <code>Symbol</code> if successful
+This means you can find out per move, which direction was moved using:</p>
+
+<pre><code><span class="t">TwentyFortyEight</span>.sample { moved <span class="o">=</span> down || left || right || up; puts moved }</code></pre>
+
+<p>Will output</p>
+
+<pre><code class='language-text'>left
+right
+down
+down
+... snipped ...
+up</code></pre>
+
+<p>also, getters such as <code><a href="TwentyFortyEight/Game.html#size%3AInt32-instance-method">Game#size</a></code> and <code><a href="TwentyFortyEight/Game.html#board%3AArray%28Array%28Int32%29%29-instance-method">Game#board</a></code> are callable from within the block.
+What they represent is up to you, depending on wether you call these <em>before</em> or <em>after</em>
+you've executed a successful move.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/SidOfc/2048-crystal/blob/bb885e3b030dfd24a7241e3ae9fa17cdbbb74a26/src/twenty_forty_eight.cr#L79" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+
+</div>
+
+</body>
+</html>

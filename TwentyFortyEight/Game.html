@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta id="repository-name" content="github.com/SidOfc/2048-crystal">
+  <link href="../css/style.css" rel="stylesheet" type="text/css" />
+  <script type="text/javascript" src="../js/doc.js"></script>
+  <title>TwentyFortyEight::Game - github.com/SidOfc/2048-crystal</title>
+</head>
+<body>
+
+<div id="types-list">
+  <div id="search-box">
+    <input type="search" id="search-input" placeholder="Search...">
+  </div>
+
+  <ul>
+    <li><a href="../index.html">README</a></li>
+  </ul>
+
+  <ul>
+  
+  <li class="parent open current" data-id="github.com/SidOfc/2048-crystal/TwentyFortyEight" data-name="twentyfortyeight">
+      <a href="../TwentyFortyEight.html">TwentyFortyEight</a>
+      
+        <ul>
+  
+  <li class=" " data-id="github.com/SidOfc/2048-crystal/TwentyFortyEight/Board" data-name="twentyfortyeight::board">
+      <a href="../TwentyFortyEight/Board.html">Board</a>
+      
+    </li>
+  
+  <li class=" current" data-id="github.com/SidOfc/2048-crystal/TwentyFortyEight/Game" data-name="twentyfortyeight::game">
+      <a href="../TwentyFortyEight/Game.html">Game</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/SidOfc/2048-crystal/TwentyFortyEight/Options" data-name="twentyfortyeight::options">
+      <a href="../TwentyFortyEight/Options.html">Options</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/SidOfc/2048-crystal/TwentyFortyEight/Row" data-name="twentyfortyeight::row">
+      <a href="../TwentyFortyEight/Row.html">Row</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+</div>
+
+<div id="main-content">
+<h1 class="type-name">
+
+  <span class="kind">struct</span> TwentyFortyEight::Game
+
+</h1>
+
+
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="../TwentyFortyEight/Game.html">TwentyFortyEight::Game</a></li><li class="superclass">Struct</li><li class="superclass">Value</li><li class="superclass">Object</li></ul>
+
+
+
+
+  <h2>Overview</h2>
+
+  <p>The <code><a href="../TwentyFortyEight/Game.html">Game</a></code> struct does all the heavy lifting, a new game with a default size of <code>4</code> will be initialized,
+then two pieces will be inserted in random a <code><a href="../TwentyFortyEight/Game.html#empty-instance-method">#empty</a></code> position</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2>Defined in:</h2>
+  
+    
+      <a href="https://github.com/SidOfc/2048-crystal/blob/bb885e3b030dfd24a7241e3ae9fa17cdbbb74a26/src/twenty_forty_eight/game.cr#L11" target="_blank">twenty_forty_eight/game.cr</a>
+    
+    <br/>
+  
+
+
+
+
+
+  <h2>Constructors</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#new%28size%3AInt32%3D4%29-class-method" class="signature"><strong>.new</strong>(size : Int32 = <span class="n">4</span>)</a>
+        
+          <div class="summary"><p>Returns a <code><a href="../TwentyFortyEight/Game.html">Game</a></code> of specified size and inserts two values at random <code><a href="../TwentyFortyEight/Game.html#empty-instance-method">#empty</a></code> positions</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#new%28board%29-class-method" class="signature"><strong>.new</strong>(board)</a>
+        
+          <div class="summary"><p>Returns a <code><a href="../TwentyFortyEight/Game.html">Game</a></code> starting with specified <code>@board</code> of type <code>Array(Array(Int32))</code>, no values will be inserted and <code><a href="../TwentyFortyEight/Game.html#size%3AInt32-instance-method">#size</a></code> will be set to <code>@board<a href="../TwentyFortyEight/Game.html#size%3AInt32-instance-method">.size</a></code></p></div>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+  <h2>Instance Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#board%3AArray%28Array%28Int32%29%29-instance-method" class="signature"><strong>#board</strong> : Array(Array(Int32))</a>
+        
+          <div class="summary"><p>Returns the current state of the games' <code><a href="../TwentyFortyEight/Board.html">Board</a></code></p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#changed%3F%3ABool-instance-method" class="signature"><strong>#changed?</strong> : Bool</a>
+        
+          <div class="summary"><p>Returns a <code>Bool</code> wether the game has <code><a href="../TwentyFortyEight/Game.html#changed%3F%3ABool-instance-method">#changed?</a></code> since last move</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#down-instance-method" class="signature"><strong>#down</strong></a>
+        
+          <div class="summary"><p>Returns the <code>Symbol</code> <code>:down</code> if the move <code><a href="../TwentyFortyEight/Game.html#changed%3F%3ABool-instance-method">#changed?</a></code> the state the game</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#empty-instance-method" class="signature"><strong>#empty</strong></a>
+        
+          <div class="summary"><p>Returns an <code>Array(NamedTuple(x: Int32, y: Int32))</code> of <code>:x</code> and <code>:y</code> positions</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#insert-instance-method" class="signature"><strong>#insert</strong></a>
+        
+          <div class="summary"><p>Returns the <code>Int32</code> value inserted at a random <code><a href="../TwentyFortyEight/Game.html#empty-instance-method">#empty</a></code> position</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#left-instance-method" class="signature"><strong>#left</strong></a>
+        
+          <div class="summary"><p>Returns the <code>Symbol</code> <code>:left</code> if the move <code><a href="../TwentyFortyEight/Game.html#changed%3F%3ABool-instance-method">#changed?</a></code> the state the game</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#move%28direction%29-instance-method" class="signature"><strong>#move</strong>(direction)</a>
+        
+          <div class="summary"><p>Returns the resulting <code>Symbol</code> of executed <code>direction</code> if successful (e.g.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#over%3F-instance-method" class="signature"><strong>#over?</strong></a>
+        
+          <div class="summary"><p>Returns a <code>Bool</code> wether the game is <code><a href="../TwentyFortyEight/Game.html#over%3F-instance-method">#over?</a></code></p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#right-instance-method" class="signature"><strong>#right</strong></a>
+        
+          <div class="summary"><p>Returns the <code>Symbol</code> <code>:right</code> if the move <code><a href="../TwentyFortyEight/Game.html#changed%3F%3ABool-instance-method">#changed?</a></code> the state the game</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#score%3AInt32-instance-method" class="signature"><strong>#score</strong> : Int32</a>
+        
+          <div class="summary"><p>Returns an <code>Int32</code> containing the current score</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#size%3AInt32-instance-method" class="signature"><strong>#size</strong> : Int32</a>
+        
+          <div class="summary"><p>Returns an <code>Int32</code> containing the size of the current <code><a href="../TwentyFortyEight/Board.html">Board</a></code></p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#unchanged%3F-instance-method" class="signature"><strong>#unchanged?</strong></a>
+        
+          <div class="summary"><p>Returns a <code>Bool</code> - the inverted of <code><a href="../TwentyFortyEight/Game.html#changed%3F%3ABool-instance-method">#changed?</a></code></p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#up-instance-method" class="signature"><strong>#up</strong></a>
+        
+          <div class="summary"><p>Returns the <code>Symbol</code> <code>:up</code> if the move <code><a href="../TwentyFortyEight/Game.html#changed%3F%3ABool-instance-method">#changed?</a></code> the state of the game</p></div>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+<div class="methods-inherited">
+  
+    
+
+
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+    
+
+
+  
+</div>
+
+
+  <h2>Constructor Detail</h2>
+  
+    <div class="entry-detail" id="new(size:Int32=4)-class-method">
+      <div class="signature">
+        
+        def self.<strong>new</strong>(size : Int32 = <span class="n">4</span>)
+
+        <a class="method-permalink" href="#new%28size%3AInt32%3D4%29-class-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Returns a <code><a href="../TwentyFortyEight/Game.html">Game</a></code> of specified size and inserts two values at random <code><a href="../TwentyFortyEight/Game.html#empty-instance-method">#empty</a></code> positions</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/SidOfc/2048-crystal/blob/bb885e3b030dfd24a7241e3ae9fa17cdbbb74a26/src/twenty_forty_eight/game.cr#L31" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="new(board)-class-method">
+      <div class="signature">
+        
+        def self.<strong>new</strong>(board)
+
+        <a class="method-permalink" href="#new%28board%29-class-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Returns a <code><a href="../TwentyFortyEight/Game.html">Game</a></code> starting with specified <code>@board</code> of type <code>Array(Array(Int32))</code>, no values will be inserted
+and <code><a href="../TwentyFortyEight/Game.html#size%3AInt32-instance-method">#size</a></code> will be set to <code>@board<a href="../TwentyFortyEight/Game.html#size%3AInt32-instance-method">.size</a></code></p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/SidOfc/2048-crystal/blob/bb885e3b030dfd24a7241e3ae9fa17cdbbb74a26/src/twenty_forty_eight/game.cr#L39" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+
+
+  <h2>Instance Method Detail</h2>
+  
+    <div class="entry-detail" id="board:Array(Array(Int32))-instance-method">
+      <div class="signature">
+        
+        def <strong>board</strong> : Array(Array(Int32))
+
+        <a class="method-permalink" href="#board%3AArray%28Array%28Int32%29%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Returns the current state of the games' <code><a href="../TwentyFortyEight/Board.html">Board</a></code></p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/SidOfc/2048-crystal/blob/bb885e3b030dfd24a7241e3ae9fa17cdbbb74a26/src/twenty_forty_eight/game.cr#L16" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="changed?:Bool-instance-method">
+      <div class="signature">
+        
+        def <strong>changed?</strong> : Bool
+
+        <a class="method-permalink" href="#changed%3F%3ABool-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Returns a <code>Bool</code> wether the game has <code><a href="../TwentyFortyEight/Game.html#changed%3F%3ABool-instance-method">#changed?</a></code> since last move</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/SidOfc/2048-crystal/blob/bb885e3b030dfd24a7241e3ae9fa17cdbbb74a26/src/twenty_forty_eight/game.cr#L106" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="down-instance-method">
+      <div class="signature">
+        
+        def <strong>down</strong>
+
+        <a class="method-permalink" href="#down-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Returns the <code>Symbol</code> <code>:down</code> if the move <code><a href="../TwentyFortyEight/Game.html#changed%3F%3ABool-instance-method">#changed?</a></code> the state the game</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/SidOfc/2048-crystal/blob/bb885e3b030dfd24a7241e3ae9fa17cdbbb74a26/src/twenty_forty_eight/game.cr#L59" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="empty-instance-method">
+      <div class="signature">
+        
+        def <strong>empty</strong>
+
+        <a class="method-permalink" href="#empty-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Returns an <code>Array(NamedTuple(x: Int32, y: Int32))</code> of <code>:x</code> and <code>:y</code> positions</p>
+
+<p>Running the following example:</p>
+
+<pre><code>puts <span class="t">TwentyFortyEight</span><span class="t">::</span><span class="t">Game</span>.<span class="k">new</span>.empty.sample[<span class="n">:x</span>]</code></pre>
+
+<p>Will output:</p>
+
+<pre><code class='language-text'>2</code></pre></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/SidOfc/2048-crystal/blob/bb885e3b030dfd24a7241e3ae9fa17cdbbb74a26/src/twenty_forty_eight/game.cr#L94" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="insert-instance-method">
+      <div class="signature">
+        
+        def <strong>insert</strong>
+
+        <a class="method-permalink" href="#insert-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Returns the <code>Int32</code> value inserted at a random <code><a href="../TwentyFortyEight/Game.html#empty-instance-method">#empty</a></code> position</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/SidOfc/2048-crystal/blob/bb885e3b030dfd24a7241e3ae9fa17cdbbb74a26/src/twenty_forty_eight/game.cr#L76" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="left-instance-method">
+      <div class="signature">
+        
+        def <strong>left</strong>
+
+        <a class="method-permalink" href="#left-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Returns the <code>Symbol</code> <code>:left</code> if the move <code><a href="../TwentyFortyEight/Game.html#changed%3F%3ABool-instance-method">#changed?</a></code> the state the game</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/SidOfc/2048-crystal/blob/bb885e3b030dfd24a7241e3ae9fa17cdbbb74a26/src/twenty_forty_eight/game.cr#L64" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="move(direction)-instance-method">
+      <div class="signature">
+        
+        def <strong>move</strong>(direction)
+
+        <a class="method-permalink" href="#move%28direction%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Returns the resulting <code>Symbol</code> of executed <code>direction</code> if successful (e.g. <code><a href="../TwentyFortyEight/Game.html#changed%3F%3ABool-instance-method">#changed?</a> => true</code>) or nil</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/SidOfc/2048-crystal/blob/bb885e3b030dfd24a7241e3ae9fa17cdbbb74a26/src/twenty_forty_eight/game.cr#L44" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="over?-instance-method">
+      <div class="signature">
+        
+        def <strong>over?</strong>
+
+        <a class="method-permalink" href="#over%3F-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Returns a <code>Bool</code> wether the game is <code><a href="../TwentyFortyEight/Game.html#over%3F-instance-method">#over?</a></code></p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/SidOfc/2048-crystal/blob/bb885e3b030dfd24a7241e3ae9fa17cdbbb74a26/src/twenty_forty_eight/game.cr#L101" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="right-instance-method">
+      <div class="signature">
+        
+        def <strong>right</strong>
+
+        <a class="method-permalink" href="#right-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Returns the <code>Symbol</code> <code>:right</code> if the move <code><a href="../TwentyFortyEight/Game.html#changed%3F%3ABool-instance-method">#changed?</a></code> the state the game</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/SidOfc/2048-crystal/blob/bb885e3b030dfd24a7241e3ae9fa17cdbbb74a26/src/twenty_forty_eight/game.cr#L70" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="score:Int32-instance-method">
+      <div class="signature">
+        
+        def <strong>score</strong> : Int32
+
+        <a class="method-permalink" href="#score%3AInt32-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Returns an <code>Int32</code> containing the current score</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/SidOfc/2048-crystal/blob/bb885e3b030dfd24a7241e3ae9fa17cdbbb74a26/src/twenty_forty_eight/game.cr#L13" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="size:Int32-instance-method">
+      <div class="signature">
+        
+        def <strong>size</strong> : Int32
+
+        <a class="method-permalink" href="#size%3AInt32-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Returns an <code>Int32</code> containing the size of the current <code><a href="../TwentyFortyEight/Board.html">Board</a></code></p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/SidOfc/2048-crystal/blob/bb885e3b030dfd24a7241e3ae9fa17cdbbb74a26/src/twenty_forty_eight/game.cr#L19" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="unchanged?-instance-method">
+      <div class="signature">
+        
+        def <strong>unchanged?</strong>
+
+        <a class="method-permalink" href="#unchanged%3F-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Returns a <code>Bool</code> - the inverted of <code><a href="../TwentyFortyEight/Game.html#changed%3F%3ABool-instance-method">#changed?</a></code></p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/SidOfc/2048-crystal/blob/bb885e3b030dfd24a7241e3ae9fa17cdbbb74a26/src/twenty_forty_eight/game.cr#L111" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="up-instance-method">
+      <div class="signature">
+        
+        def <strong>up</strong>
+
+        <a class="method-permalink" href="#up-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Returns the <code>Symbol</code> <code>:up</code> if the move <code><a href="../TwentyFortyEight/Game.html#changed%3F%3ABool-instance-method">#changed?</a></code> the state of the game</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/SidOfc/2048-crystal/blob/bb885e3b030dfd24a7241e3ae9fa17cdbbb74a26/src/twenty_forty_eight/game.cr#L54" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+
+</div>
+
+</body>
+</html>

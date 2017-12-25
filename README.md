@@ -10,12 +10,12 @@ A next step will be to add a TUI so that one can play the game within a terminal
 
 To install, add it as a dependency to your `shards.yml`:
 
-~~~crystal
+```
 dependencies:
     twenty_forty_eight:
         github: SidOfc/2048-crystal
         branch: master
-~~~
+```
 
 ## Usage
 

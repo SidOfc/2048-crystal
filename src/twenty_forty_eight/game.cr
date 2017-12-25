@@ -45,7 +45,7 @@ module TwentyFortyEight
       case direction
       when 'l', :left  then left
       when 'r', :right then right
-      when 'r', :up    then up
+      when 'u', :up    then up
       when 'd', :down  then down
       end
     end
